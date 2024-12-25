@@ -18,6 +18,7 @@ Features:
 - Converts Gregorian to Persian dates
 - Handles leap years in both calendars
 - Provides Persian month names, seasons, and week numbers
+- Configurable date range based on your needs
 
 Date Range:
 - Start date: March 21, 2022 (1401/01/01)
