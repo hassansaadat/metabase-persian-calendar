@@ -40,6 +40,9 @@ This model creates a persistent calendar table in Metabase that converts Gregori
 - Configurable date range based on your needs
 ## Usage Examples
 
+> Note: The following examples use placeholder table names (`your_table`, `transactions`, `events`). 
+> Replace these with your actual table names in Metabase.
+
 ### Basic Date Conversion
 ```sql
 SELECT 
