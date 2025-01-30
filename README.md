@@ -1,9 +1,15 @@
 # Persian Calendar Model for Metabase
 
-A Metabase model that converts Gregorian dates to the Persian (Jalali) calendar system, providing additional calendar features like seasons, week numbers, and Persian month names.
+A Metabase model that converts Gregorian dates to the Persian (Jalali) calendar system, providing additional calendar features like seasons, week start dates, and Persian month names.
 
 ## Overview
 This model creates a persistent calendar table in Metabase that converts Gregorian dates to Persian (Jalali) calendar dates. It's designed to be used as a model that other queries can join with to get Persian date information.
+
+## Database Support
+Currently available for:
+- PostgreSQL: See `postgresql/metabase-persian-calendar.sql`
+
+Support for other databases is planned for future releases.
 
 ## Setup in Metabase
 
@@ -36,7 +42,7 @@ This model creates a persistent calendar table in Metabase that converts Gregori
 - Handles leap years in both calendars
 - Provides month names in Persian (فارسی)
 - Includes season information
-- Calculates week numbers
+- Provides Persian week start date (Saturday to Friday)
 - Configurable date range based on your needs
 ## Usage Examples
 
@@ -98,18 +104,18 @@ ORDER BY
 SELECT 
     pc.persian_year,
     pc.persian_month,
-    pc.persian_week_number,
+    pc.persian_week_start_date,
     COUNT(*) as weekly_count
 FROM events t
 JOIN {{#YOUR_MODEL_ID}} pc ON DATE_TRUNC('day', t.event_date) = pc.day_start
 GROUP BY 
     pc.persian_year,
     pc.persian_month,
-    pc.persian_week_number
+    pc.persian_week_start_date
 ORDER BY 
     pc.persian_year,
     pc.persian_month,
-    pc.persian_week_number;
+    pc.persian_week_start_date;
 ```
 
 ### Date Filtering
@@ -135,7 +141,7 @@ WHERE
 | persian_month_name | text | Persian month name in Persian script |
 | persian_season | text | Season name in Persian script |
 | persian_season_number | integer | Season number (1-4) |
-| persian_week_number | integer | Week number in the Persian year |
+| persian_week_start_date | date | Start date of the Persian week (Saturday) |
 ## Limitations
 - Default date range:
   - Starts from March 21, 2022 (1401/01/01)
