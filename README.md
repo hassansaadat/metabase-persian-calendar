@@ -7,7 +7,7 @@ This model creates a persistent calendar table in Metabase that converts Gregori
 
 ## Database Support
 Currently available for:
-- PostgreSQL: See `postgresql/metabase-persian-calendar.sql`
+- PostgreSQL: See `postgresql-persian-calendar.sql`
 
 Support for other databases is planned for future releases.
 
