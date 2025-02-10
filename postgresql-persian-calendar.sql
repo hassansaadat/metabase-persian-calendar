@@ -159,7 +159,8 @@ SELECT
     ELSE 4
   END AS persian_season_number,
   -- Week start date for grouping in Metabase
-  persian_week_start_date
-FROM persian_dates
+  persian_week_start_date,
+  TRANSLATE(persian_year || '/' || LPAD(persian_month::TEXT, 2, '0') || '/' || LPAD(persian_day::TEXT, 2, '0'), '0123456789', '۰۱۲۳۴۵۶۷۸۹') AS persian_date
+  FROM persian_dates
 )
 SELECT * FROM persian_calendar;
